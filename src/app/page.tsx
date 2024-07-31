@@ -1,16 +1,20 @@
+'use server'
 import styles from "./page.module.css";
-import NavbarComponent from "@/components/navbar/navbarComponent";
-import TableComponent from "@/components/table/tableComponent";
+import NavbarComponent from "@/components/app/navbar/navbarComponent";
+import StudentsTableComponent from "@/components/students/studentsTableComponent";
 import { fetchStudents } from "@/services/usersService";
+import { StudentsContextProvider } from "@/context/studentsStore";
 
 export default async function Home() {
-  const { success, data } = await fetchStudents(1, 10);
+  const { data } = await fetchStudents(1, 10);
 
   return (
     <main className={styles.main}>
-      <NavbarComponent/>
-      <p>Students found: { data?.length }</p>
-      <TableComponent/>
+      <StudentsContextProvider>
+        <NavbarComponent/>
+
+        <StudentsTableComponent initialData={data || []} />
+      </StudentsContextProvider>
     </main>
   );
 }

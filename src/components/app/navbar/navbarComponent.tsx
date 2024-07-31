@@ -1,4 +1,4 @@
-import ButtonComponent from "@/components/button/buttonComponent"
+import ButtonComponent from "@/components/app/button/buttonComponent"
 
 export default function NavbarComponent() {
   return (

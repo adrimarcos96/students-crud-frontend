@@ -12,12 +12,12 @@ export const http =  axios.create({
   timeout: 30000
 });
 
-export const fetchPaginatedResources = async <T>(uri: string, page: number, pageSize: number): Promise<ResponseData<T>> => {
-  let responseData: ResponseData<T>;
+export const fetchPaginatedResources = async <T>(uri: string, page: number, pageSize: number): Promise<ResponseData<T[]>> => {
+  let responseData: ResponseData<T[]>;
 
   try {
     const queryParams = `page=${page || 0}&pageSize=${pageSize || 10}`;
-    const response = await http.get(`${uri}?${queryParams}`) as AxiosResponse<{ data: T }>;
+    const response = await http.get(`${uri}?${queryParams}`) as AxiosResponse<{ data: T[] }>;
 
     responseData = {
       data: response.data.data,
@@ -27,7 +27,7 @@ export const fetchPaginatedResources = async <T>(uri: string, page: number, page
     console.error(`ERROR fetching paginated data. page: ${page} - pageSize: ${pageSize}`, error.message, error.stack);
 
     responseData = {
-      data: null,
+      data: [],
       success: false
     };
   }

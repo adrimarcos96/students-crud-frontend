@@ -2,14 +2,14 @@
 "use server";
 import { Student } from "@/models/student.model";
 import { fetchPaginatedResources, ResponseData } from "./baseService";
-import { sleep } from "@/utils";
-import { mockedStudentList } from "@/mocks/students.mock";
+import { getMockedStudentList } from "@/mocks/students.mock";
 
 export const fetchStudents = async (page: number, pageSize: number): Promise<ResponseData<Student[]>> => {
-  await sleep(2000);
-  // await fetchPaginatedResources<Student[]>('students', page, pageSize);
+  // return await fetchPaginatedResources<Student>('students', page, pageSize);
+  const startAt = (page - 1) * pageSize;
+  const endAt = startAt + pageSize;
   return {
     success: true,
-    data: mockedStudentList
+    data: getMockedStudentList().slice(startAt, endAt)
   }
 };

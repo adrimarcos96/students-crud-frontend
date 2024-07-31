@@ -1,4 +1,4 @@
-import PaginationComponent from "@/components/pagination/paginationComponent";
+import PaginationComponent from "@/components/app/pagination/paginationComponent";
 
 export default function TableComponent() {
   return (
