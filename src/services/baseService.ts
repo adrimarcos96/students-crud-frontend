@@ -1,10 +1,17 @@
 "use server";
 import axios, { AxiosResponse } from "axios";
 import ENV from "@/config/env";
+import { Student } from "@/models/student.model";
 
 export interface ResponseData<T> {
   data: T | null
   success: boolean
+}
+
+export interface PaginatedResponse<T> {
+  data: T[]
+  page: number
+  totalItems: number
 }
 
 export const http =  axios.create({
@@ -12,22 +19,26 @@ export const http =  axios.create({
   timeout: 30000
 });
 
-export const fetchPaginatedResources = async <T>(uri: string, page: number, pageSize: number): Promise<ResponseData<T[]>> => {
-  let responseData: ResponseData<T[]>;
+export const fetchPaginatedResources = async <T>(uri: string, page: number, pageSize: number): Promise<ResponseData<PaginatedResponse<T>>> => {
+  let responseData: ResponseData<PaginatedResponse<T>>;
 
   try {
     const queryParams = `page=${page || 0}&pageSize=${pageSize || 10}`;
-    const response = await http.get(`${uri}?${queryParams}`) as AxiosResponse<{ data: T[] }>;
+    const response = await http.get(`${uri}?${queryParams}`) as AxiosResponse<PaginatedResponse<T>>;
 
     responseData = {
-      data: response.data.data,
+      data: response.data,
       success: true
     };
   } catch (error: any) {
     console.error(`ERROR fetching paginated data. page: ${page} - pageSize: ${pageSize}`, error.message, error.stack);
 
     responseData = {
-      data: [],
+      data: {
+        data: [],
+        page: 1,
+        totalItems: 0
+      },
       success: false
     };
   }

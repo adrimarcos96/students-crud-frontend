@@ -1,0 +1,34 @@
+
+@import '../../../styles//variables.module';
+
+.table-container {
+    overflow-x: auto;
+    min-width: 100%;
+}
+
+.custom-table {
+    overflow-x: auto;
+}
+
+.table-row {
+    min-height: 70px;
+    border-bottom: 1px solid getColor('gray');
+}
+
+
+.table-header {
+    align-items: center;
+    border-bottom: 3px solid getColor('gray');
+}
+
+.table-cell {
+    padding: 10px;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}

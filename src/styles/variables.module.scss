@@ -1,0 +1,45 @@
+@use 'sass:map';
+
+// fonts
+$font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+// Colors
+$colors: (
+  'primary': #334e9f,
+  'secondary': #02bdfb,
+  'success': #0ead2b,
+  'warn': #b0a91c,
+  'error': #9b0b0b,
+  'white': #ffffff,
+  'black': #000000,
+  'gray': #aeaeae,
+  'yellow': #ffea00
+);
+
+$breakpoints: (
+  'phone': 640px,
+  'mobile': 768px,
+  'desktop': 1024px,
+);
+
+@function getColor($color) {
+  @return map.get($colors, $color);
+}
+
+@function getBreakpoint($breakpoint) {
+  @return map.get($breakpoints, $breakpoint);
+}
+
+:export {
+  colorPrimary: #334e9f;
+  colorSecondary: #02bdfb;
+  colorSuccess: #0ead2b;
+  colorWarn: #b0a91c;
+  colorError: #9b0b0b;
+  colorWhite: #ffffff;
+  colorBlack: #000000;
+  colorGray: #aeaeae;
+  colorYellow: #ffea00;
+}

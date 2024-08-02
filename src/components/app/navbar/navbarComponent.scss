@@ -1,0 +1,29 @@
+@import '../../../styles/variables.module';
+
+.header {
+  width: 100%;
+  background-color: getColor('primary');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.headerContent {
+  max-width: 1500px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.colorWhite{
+  color: getColor('white');
+}
