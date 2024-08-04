@@ -1,5 +1,6 @@
 import { useTableContext } from "@/context/tableStore";
 import { TableColumnDataType, TableRowDataType } from "./table.types";
+import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 // Components
 import ButtonComponent from "@/components/app/button/buttonComponent";
@@ -65,23 +66,28 @@ export default function TableRowComponent({
 
       {columns.map((column, columnIndex) => (
         <div key={columnIndex} style={{ width: column.width }} className="table-cell row flex-wrap text-ellipsis">
-          <p>{rowData[column.prop]}</p>
+          <p style={{ color: variables.colorPrimary, fontWeight: 500 }}>{rowData[column.prop]}</p>
         </div>
       ))}
 
       {!hideActions && <div className="row row-center-vertical table-cell" style={{ width: 160 }}>
         <ButtonComponent
-          text="Icon"
-          backgroundColor={variables.colorError}
-          textColor={variables.colorWhite}
-          onClick={() => handleAction('delete')}
-        />
-        <ButtonComponent
-          text="icon"
-          backgroundColor={variables.colorWarn}
-          textColor={variables.colorWhite}
+          paddingLeft={8}
+          paddingRight={8}
+          marginLeft={8}
           onClick={() => handleAction('edit')}
-        />
+        >
+          <PencilIcon width={22} height={22} style={{ color: variables.colorWarn }} />
+        </ButtonComponent>
+
+        <ButtonComponent
+          paddingLeft={8}
+          paddingRight={8}
+          marginRight={8}
+          onClick={() => handleAction('delete')}
+        >
+          <TrashIcon width={22} height={22} style={{ color: variables.colorError }} />
+        </ButtonComponent>
       </div>}
     </div>
   );

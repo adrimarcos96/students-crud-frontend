@@ -78,7 +78,7 @@ export default function StudentsTableComponent({ initialData, totalItems }: Prop
     <div style={{ paddingLeft: 10, paddingRight: 10 }}>
       <TableComponent columns={tableColumns} data={tableData} />
 
-      <div style={{ marginTop: 10 }}>
+      <div style={{ marginTop: 10, marginBottom: 50 }}>
         <PaginationComponent
           totalPages={lastPage}
           activePage={currentPage}

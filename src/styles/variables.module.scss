@@ -1,16 +1,14 @@
 @use 'sass:map';
 
 // fonts
-$font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-  "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-  "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+$font-family: '__Inter_36bd41', '__Inter_Fallback_36bd41';
 
 // Colors
 $colors: (
-  'primary': #334e9f,
+  'primary': #36446f,
   'secondary': #02bdfb,
   'success': #0ead2b,
-  'warn': #b0a91c,
+  'warn': #e6b616,
   'error': #9b0b0b,
   'white': #ffffff,
   'black': #000000,
@@ -33,13 +31,14 @@ $breakpoints: (
 }
 
 :export {
-  colorPrimary: #334e9f;
+  colorPrimary: #36446f;
   colorSecondary: #02bdfb;
   colorSuccess: #0ead2b;
-  colorWarn: #b0a91c;
+  colorWarn: #e6b616;
   colorError: #9b0b0b;
   colorWhite: #ffffff;
   colorBlack: #000000;
   colorGray: #aeaeae;
   colorYellow: #ffea00;
+  fontFamily: $font-family
 }

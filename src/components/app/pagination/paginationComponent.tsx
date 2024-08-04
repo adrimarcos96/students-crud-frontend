@@ -18,13 +18,18 @@ export default function PaginationComponent({ description, totalPages, activePag
     const buttons: any[] = [];
 
     for (let i = 0; i < totalPages; i++) {
-      buttons.push((<ButtonComponent
-        key={i}
-        text={`${i + 1}`}
-        backgroundColor={activePage - 1 === i ? variables.colorSecondary : variables.colorWhite}
-        textColor={activePage - 1 === i ? variables.colorWhite : variables.colorPrimary}
-        onClick={() => goToPage(i + 1)}
-      />));
+      buttons.push(
+        (<ButtonComponent
+          key={i}
+          backgroundColor={activePage - 1 === i ? variables.colorSecondary : undefined}
+          paddingLeft={14}
+          paddingRight={14}
+          textColor={activePage - 1 === i ? variables.colorWhite : variables.colorPrimary}
+          onClick={() => goToPage(i + 1)}
+        >
+          <span className="font-size-16" style={{ fontFamily: variables.fontFamily, fontWeight: 500 }}>{`${i + 1}`}</span>
+        </ButtonComponent>)
+      );
     }
 
     return buttons;
@@ -33,23 +38,25 @@ export default function PaginationComponent({ description, totalPages, activePag
   return (
     <div className="row flex-wrap justify-between">
       <div>
-        <p>{description}</p>
+        <p className="font-size-16" style={{ color: variables.colorPrimary, fontWeight: 500 }}>{description}</p>
       </div>
 
       <div style={{ marginTop: 8, marginBottom: 8 }}>
         <ButtonComponent
-          text="Previous"
           backgroundColor={variables.colorWhite}
-          textColor={variables.colorPrimary}
+          // textColor={variables.colorPrimary}
           onClick={goPrevPage}
-        />
+        >
+          <span className="font-size-16" style={{ fontFamily: variables.fontFamily, color: variables.colorPrimary, fontWeight: 500 }}>Previous</span>
+        </ButtonComponent>
         {PageButtons()}
         <ButtonComponent
-          text="Next"
           backgroundColor={variables.colorWhite}
-          textColor={variables.colorPrimary}
+          // textColor={variables.colorPrimary}
           onClick={goNextPage}
-        />
+        >
+          <span className="font-size-16" style={{ fontFamily: variables.fontFamily, color: variables.colorPrimary, fontWeight: 500 }}>Next</span>
+        </ButtonComponent>
       </div>
     </div>
   );

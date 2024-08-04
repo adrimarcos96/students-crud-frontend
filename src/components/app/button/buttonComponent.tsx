@@ -2,16 +2,30 @@
 import styles from "./button.module.scss";
 
 interface ComponentProps {
-  text: string
-  backgroundColor: string
-  textColor: string
+  children: React.ReactNode
   onClick: Function
+  textColor?: string
+  backgroundColor?: string
+  paddingLeft?: number
+  paddingRight?: number
+  marginLeft?: number
+  marginRight?: number
+  height?: number
 }
 
-export default function ButtonComponent({ text, backgroundColor, textColor, onClick }: ComponentProps) {
+export default function ButtonComponent({
+  backgroundColor,
+  textColor,
+  onClick,
+  children,
+  paddingLeft,
+  paddingRight,
+  marginLeft,
+  marginRight,
+  height
+}: ComponentProps) {
 
   const handleOnClick = () => {
-    console.log('CLicking App button...')
     onClick();
   };
 
@@ -19,18 +33,18 @@ export default function ButtonComponent({ text, backgroundColor, textColor, onCl
     <button
       className={ styles.button }
       style={{
-        backgroundColor,
-        color: textColor,
-        height: 35,
-        paddingLeft: 20,
-        paddingRight: 20,
-        marginLeft: 5,
-        marginRight: 5,
+        backgroundColor: backgroundColor || 'transparent',
+        color: textColor || 'black',
+        height: height || 35,
+        paddingLeft: paddingLeft || 20,
+        paddingRight: paddingRight ||20,
+        marginLeft: marginLeft || 5,
+        marginRight: marginRight || 5,
         borderRadius: 3
       }}
       onClick={handleOnClick}
     >
-      {text}
+      {children}
     </button>
   );
 }

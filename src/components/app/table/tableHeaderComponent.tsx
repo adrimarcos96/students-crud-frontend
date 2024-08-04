@@ -42,14 +42,14 @@ export default function TableRowComponent({
       )}
       {columns.map((column, index) => (
         <div key={index} className="row table-cell" style={{ width: column.width }}>
-          <span className="font-size-20" style={{ color: variables.colorPrimary, fontWeight: 'bold' }}>
+          <span className="font-size-20" style={{ color: variables.colorPrimary, fontWeight: 600 }}>
             {column.title}
           </span>
         </div>
       ))}
       {!hideActions && (
         <div className="row row-center table-cell font-size-20">
-          <span style={{ color: variables.colorPrimary, width: 160, fontWeight: 'bold' }}>Actions</span>
+          <span style={{ color: variables.colorPrimary, width: 160, fontWeight: 600 }}>Actions</span>
         </div>
       )}
     </div>
