@@ -9,8 +9,8 @@ export const fetchStudents = async (page: number, pageSize: number): Promise<Res
 
   const startAt = (page - 1) * pageSize;
   const endAt = startAt + pageSize;
-  const totalItems = 55
-  const students = getMockedStudentList(55).slice(startAt, endAt)
+  const totalItems = 23;
+  const students = getMockedStudentList(totalItems).slice(startAt, endAt)
 
   return {
     success: true,

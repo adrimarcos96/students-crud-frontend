@@ -1,7 +1,10 @@
-'use client'
+"use client";
+
 import styles from "./button.module.scss";
+import variables from "@/styles/variables.module.scss";
 
 interface ComponentProps {
+  id: string
   children: React.ReactNode
   onClick: Function
   textColor?: string
@@ -14,10 +17,11 @@ interface ComponentProps {
 }
 
 export default function ButtonComponent({
-  backgroundColor,
-  textColor,
+  id,
   onClick,
   children,
+  backgroundColor,
+  textColor,
   paddingLeft,
   paddingRight,
   marginLeft,
@@ -31,9 +35,11 @@ export default function ButtonComponent({
 
   return (
     <button
+      id={id}
+      aria-label="Button"
       className={ styles.button }
       style={{
-        backgroundColor: backgroundColor || 'transparent',
+        backgroundColor: backgroundColor || variables.colorTransparent,
         color: textColor || 'black',
         height: height || 35,
         paddingLeft: paddingLeft || 20,

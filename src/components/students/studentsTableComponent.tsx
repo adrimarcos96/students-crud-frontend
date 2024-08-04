@@ -17,7 +17,7 @@ export default function StudentsTableComponent({ initialData, totalItems }: Prop
   const { students, totalStudents, setStudents, setTotalStudents } = useStudentsContext();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [lastPage, setLastPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(10);
+  const [pageSize, setPageSize] = useState<number>(5);
 
   const mapStudentsDataForTable = (): TableRowDataType[] => {
     return students.map<TableRowDataType>(student => ({

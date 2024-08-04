@@ -9,6 +9,7 @@ import TableRowComponent from "./tableRowComponent";
 import TableHeaderComponent from "./tableHeaderComponent";
 
 // - Styles
+import variables from '@/styles/variables.module.scss';
 import './tableComponent.scss';
 
 export interface ComponentProps {
@@ -82,7 +83,7 @@ export default function TableComponent({columns, data, hideCheckboxs, hideAction
             <p>No data</p>
           </div>)
         : (<div>
-          {data.map((rowData) => typeof checkboxStatuses[rowData.id] !== "undefined" &&
+          {data.map((rowData, index) => typeof checkboxStatuses[rowData.id] !== "undefined" &&
             <TableRowComponent
               key={rowData.id}
               rowData={rowData}
@@ -93,6 +94,7 @@ export default function TableComponent({columns, data, hideCheckboxs, hideAction
               hideCheckbox={false}
               handleClickOnEdit={handleClickOnEditRow}
               handleClickOnDelete={handleClickOnDeleteRow}
+              backgroundColor={index % 2 === 0 ? variables.colorLightGray : variables.colorTransparent}
             />
           )}
         </div>)

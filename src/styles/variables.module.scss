@@ -13,7 +13,9 @@ $colors: (
   'white': #ffffff,
   'black': #000000,
   'gray': #aeaeae,
-  'yellow': #ffea00
+  'yellow': #ffea00,
+  'lightGray': rgba(204, 216, 233, 0.2),
+  'transparent': transparent
 );
 
 $breakpoints: (
@@ -40,5 +42,7 @@ $breakpoints: (
   colorBlack: #000000;
   colorGray: #aeaeae;
   colorYellow: #ffea00;
+  colorLightGray: rgba(204, 216, 233, 0.2);
+  colorTransparent: transparent;
   fontFamily: $font-family
 }

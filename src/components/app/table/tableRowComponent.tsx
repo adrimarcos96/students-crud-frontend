@@ -17,6 +17,7 @@ interface ComponentProps {
   hideActions?: boolean
   handleClickOnEdit?: Function
   handleClickOnDelete?: Function
+  backgroundColor: string
 }
 
 export default function TableRowComponent({
@@ -26,7 +27,8 @@ export default function TableRowComponent({
   hideCheckbox,
   hideActions,
   handleClickOnEdit,
-  handleClickOnDelete
+  handleClickOnDelete,
+  backgroundColor
 }: ComponentProps) {
   const { checkboxStatuses, changeStatus } = useTableContext();
 
@@ -50,7 +52,11 @@ export default function TableRowComponent({
   };
 
   return (
-    <div key={rowData.id} className="table-row justify-between" style={{ display: useInlineFlex ? 'inline-flex' : 'flex' }}>
+    <div
+      key={rowData.id}
+      className="table-row justify-between"
+      style={{ display: useInlineFlex ? 'inline-flex' : 'flex', backgroundColor: backgroundColor || variables.colorTransparent }}
+    >
       {!hideCheckbox && (
         <div className="row row-center table-cell" style={{ width: 80 }}>
           <input
@@ -72,6 +78,7 @@ export default function TableRowComponent({
 
       {!hideActions && <div className="row row-center-vertical table-cell" style={{ width: 160 }}>
         <ButtonComponent
+          id={`edit-button-${rowData.id}`}
           paddingLeft={8}
           paddingRight={8}
           marginLeft={8}
@@ -81,6 +88,7 @@ export default function TableRowComponent({
         </ButtonComponent>
 
         <ButtonComponent
+          id={`delete-button-${rowData.id}`}
           paddingLeft={8}
           paddingRight={8}
           marginRight={8}

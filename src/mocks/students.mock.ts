@@ -3,8 +3,7 @@ import { Student } from "@/models/student.model";
 
 export const getMockedStudentList = (totalStudents?: number): Student[] => {
   const mockedStudentList: Student[] = [];
-  const length = typeof totalStudents === 'undefined' ? 80 : totalStudents;
-
+  const length = typeof totalStudents === 'undefined' ? 100 : totalStudents;
 
   for (let i = 0; i < length; i++) {
     mockedStudentList.push({

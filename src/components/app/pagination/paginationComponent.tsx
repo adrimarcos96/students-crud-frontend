@@ -21,6 +21,7 @@ export default function PaginationComponent({ description, totalPages, activePag
       buttons.push(
         (<ButtonComponent
           key={i}
+          id={`pagination-button-${i}`}
           backgroundColor={activePage - 1 === i ? variables.colorSecondary : undefined}
           paddingLeft={14}
           paddingRight={14}
@@ -43,16 +44,16 @@ export default function PaginationComponent({ description, totalPages, activePag
 
       <div style={{ marginTop: 8, marginBottom: 8 }}>
         <ButtonComponent
+          id="pagination-button-next"
           backgroundColor={variables.colorWhite}
-          // textColor={variables.colorPrimary}
           onClick={goPrevPage}
         >
           <span className="font-size-16" style={{ fontFamily: variables.fontFamily, color: variables.colorPrimary, fontWeight: 500 }}>Previous</span>
         </ButtonComponent>
         {PageButtons()}
         <ButtonComponent
+          id="prev-button-next"
           backgroundColor={variables.colorWhite}
-          // textColor={variables.colorPrimary}
           onClick={goNextPage}
         >
           <span className="font-size-16" style={{ fontFamily: variables.fontFamily, color: variables.colorPrimary, fontWeight: 500 }}>Next</span>
